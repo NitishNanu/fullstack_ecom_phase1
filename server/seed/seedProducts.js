@@ -78,10 +78,69 @@ const techProducts = [
     console.log('🔄 Seeding TechHub Store products...');
     await Product.deleteMany({});
 
-    // Add random ratings and stock to products
+    // Add images, ratings and stock to products
+    const productImages = {
+      'Dell XPS 13 Laptop': 'https://images.unsplash.com/photo-1588872657840-790ff3bde08c?w=400&h=400&fit=crop',
+      'MacBook Pro 14"': 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=400&fit=crop',
+      'ASUS ROG Gaming Laptop': 'https://images.unsplash.com/photo-1566181879618-f60c73e8f62a?w=400&h=400&fit=crop',
+      'HP Pavilion 15': 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop',
+      'Lenovo ThinkPad X1': 'https://images.unsplash.com/photo-1573921998318-d24e0e3c8e5d?w=400&h=400&fit=crop',
+      'Apple MacBook Air M2': 'https://images.unsplash.com/photo-1515634200202-4f1c4cd570d7?w=400&h=400&fit=crop',
+      'MSI Raider GE76': 'https://images.unsplash.com/photo-1519762211715-31a731c6f16d?w=400&h=400&fit=crop',
+      'Acer Swift 3': 'https://images.unsplash.com/photo-1559056199-641a0ac8b3f4?w=400&h=400&fit=crop',
+      
+      'iPhone 15 Pro Max': 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400&h=400&fit=crop',
+      'Samsung Galaxy S24 Ultra': 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400&h=400&fit=crop',
+      'OnePlus 12': 'https://images.unsplash.com/photo-1511454612892-09229cd63445?w=400&h=400&fit=crop',
+      'Google Pixel 8 Pro': 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400&h=400&fit=crop',
+      'Xiaomi 14 Pro': 'https://images.unsplash.com/photo-1519070680033-05a50db3dd5e?w=400&h=400&fit=crop',
+      'iPhone 15': 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400&h=400&fit=crop',
+      'Samsung Galaxy A54': 'https://images.unsplash.com/photo-1504147090032-361bb6d9ee6d?w=400&h=400&fit=crop',
+      'Realme 12 Pro Plus': 'https://images.unsplash.com/photo-1511290739894-5fba8f36b566?w=400&h=400&fit=crop',
+      
+      'iPad Pro 12.9" M2': 'https://images.unsplash.com/photo-1517153295259-f595aa45efba?w=400&h=400&fit=crop',
+      'Samsung Galaxy Tab S9 Ultra': 'https://images.unsplash.com/photo-1526408529797-d826f96eac22?w=400&h=400&fit=crop',
+      'iPad Air M1': 'https://images.unsplash.com/photo-1610945415295-d9bbf115b72e?w=400&h=400&fit=crop',
+      'OnePlus Pad': 'https://images.unsplash.com/photo-1526408529797-d826f96eac22?w=400&h=400&fit=crop',
+      'Lenovo Tab P11 Pro': 'https://images.unsplash.com/photo-1517153295259-f595aa45efba?w=400&h=400&fit=crop',
+      
+      'Sony WH-1000XM5': 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop',
+      'Apple AirPods Pro 2': 'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400&h=400&fit=crop',
+      'Bose QuietComfort 45': 'https://images.unsplash.com/photo-1487215737519-e21cc028cb29?w=400&h=400&fit=crop',
+      'JBL Live Pro 2': 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop',
+      'Sennheiser Momentum 4': 'https://images.unsplash.com/photo-1487215737519-e21cc028cb29?w=400&h=400&fit=crop',
+      'Beats Studio Pro': 'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400&h=400&fit=crop',
+      'Samsung Galaxy Buds2 Pro': 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop',
+      'Anker Soundcore Space A40': 'https://images.unsplash.com/photo-1487215737519-e21cc028cb29?w=400&h=400&fit=crop',
+      
+      'Apple Watch Series 9': 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop',
+      'Samsung Galaxy Watch6': 'https://images.unsplash.com/photo-1505856584826-36dd345f3963?w=400&h=400&fit=crop',
+      'Garmin Forerunner 265': 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop',
+      'Xiaomi Watch S1': 'https://images.unsplash.com/photo-1505856584826-36dd345f3963?w=400&h=400&fit=crop',
+      'Fitbit Sense 2': 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop',
+      
+      'Canon EOS R6 Mark II': 'https://images.unsplash.com/photo-1527482797697-8795b1a55a45?w=400&h=400&fit=crop',
+      'Sony A7 IV': 'https://images.unsplash.com/photo-1616008375890-cb53b6c5f8f5?w=400&h=400&fit=crop',
+      'Nikon Z9': 'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=400&h=400&fit=crop',
+      'DJI Mavic 3 Pro': 'https://images.unsplash.com/photo-1519452575417-564c1401ecc0?w=400&h=400&fit=crop',
+      'GoPro Hero 11 Black': 'https://images.unsplash.com/photo-1493515169062-81342ee5ff30?w=400&h=400&fit=crop',
+      
+      'Logitech MX Master 3S': 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop',
+      'Corsair K95 Platinum': 'https://images.unsplash.com/photo-1587829191301-72ec7daa33f1?w=400&h=400&fit=crop',
+      'ASUS VP28U Monitor': 'https://images.unsplash.com/photo-1573549050029-40cffe8d8a5d?w=400&h=400&fit=crop',
+      'Razer DeathAdder V3': 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop',
+      'SteelSeries QcK Mousepad': 'https://images.unsplash.com/photo-1614462239855-7eb62b53c1da?w=400&h=400&fit=crop',
+      
+      'Samsung 990 Pro SSD 2TB': 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=400&h=400&fit=crop',
+      'Western Digital Blue 1TB': 'https://images.unsplash.com/photo-1615840287214-7ff58936c4cf?w=400&h=400&fit=crop',
+      'Seagate Barracuda Pro 4TB': 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=400&h=400&fit=crop',
+      'Kingston DataTraveler Exodia 64GB': 'https://images.unsplash.com/photo-1613141308742-2e67af56d448?w=400&h=400&fit=crop',
+      'Samsung T7 Shield 2TB': 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=400&h=400&fit=crop'
+    };
+
     const productsWithRatings = techProducts.map(p => ({
       ...p,
-      image: `https://picsum.photos/seed/${p.title.replace(/\s+/g, '_')}/400/400`,
+      image: productImages[p.title] || `https://picsum.photos/seed/${p.title.replace(/\s+/g, '_')}/400/400`,
       stock: Math.floor(Math.random() * 30) + 5
     }));
 

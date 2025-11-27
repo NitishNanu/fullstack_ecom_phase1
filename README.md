@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TechHub Store - Phase 1
 
 A modern full-stack e-commerce platform specializing in tech products:
@@ -250,3 +251,6 @@ For issues or questions, please create an issue in the repository.
 **Created**: November 2024  
 **Version**: Phase 1  
 **Status**: ✅ Active Development
+=======
+# fullstack_ecom_phase1
+>>>>>>> 682ed3da844f2d9d6a3eaa821326a520ee2b8028
